@@ -1,34 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx
+  name: mysql
   namespace: demo-app
   labels:
-    app: nginx
+    app: mysql
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nginx
+      app: mysql
   template:
     metadata:
       labels:
-        app: nginx
+        app: mysql
     spec:
       containers:
-      - name: nginx
-        image: bharats487/nginx-crash:latest
+      - name: mysql
+        image: mysql:5.7
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: password
         ports:
-        - containerPort: 80
+        - containerPort: 3306
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx
+  name: mysql
   namespace: demo-app
 spec:
   selector:
-    app: nginx
+    app: mysql
   ports:
-  - port: 80
-  type: LoadBalancer
+  - port: 3306
+  clusterIP: None

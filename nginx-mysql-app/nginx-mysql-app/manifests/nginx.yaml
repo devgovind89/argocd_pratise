@@ -17,7 +17,8 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: bharats487/nginx-crash:latest
+        # This will be replaced with your custom image after building and pushing
+        image: nginx:alpine
         ports:
         - containerPort: 80
 ---

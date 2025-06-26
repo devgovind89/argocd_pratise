@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/devgovind89/argocd_pratise.git
+    repoURL: https://github.com/your-username/argocd-demo.git
     targetRevision: HEAD
     path: nginx-mysql-app/manifests
   destination:
